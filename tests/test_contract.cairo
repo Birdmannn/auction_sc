@@ -19,12 +19,12 @@ fn test_register_and_get_items() {
     let item_2: ByteArray = "a sea horse with the need to be longer than a felt";
     dispatcher.register_item(item_1);
     dispatcher.register_item(item_2);
-    
+
     let item_1: ByteArray = "dogs";
     let item_2: ByteArray = "a sea horse with the need to be longer than a felt";
     let (item_1_ref, _) = dispatcher.get_registered_item(item_1);
     let (item_2_ref, _) = dispatcher.get_registered_item(item_2);
-    
+
     let item_1: ByteArray = "dogs";
     let item_2: ByteArray = "a sea horse with the need to be longer than a felt";
     // assert_eq!(item_1, item_1_ref);
@@ -33,4 +33,15 @@ fn test_register_and_get_items() {
     assert(item_2 == item_2_ref, 'second not equal');
     let items_in_store = dispatcher.get_item_count();
     assert(items_in_store == 2_u64, 'item count != 2');
+}
+
+#[test]
+#[should_panic]
+fn bid_on_items() {
+    let contract_address = deploy_contract("Auction");
+    let dispatcher = IAuctionDispatcher { contract_address };
+    dispatcher.register_item("dogs");
+    dispatcher.bid("dogs", 300_u32);
+    dispatcher.bid("dogs", 50_u32);
+    // assert(, '');
 }
