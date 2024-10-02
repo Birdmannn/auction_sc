@@ -1,0 +1,5 @@
+{
+   "cairo1.preferScarbLanguageServer": false,
+   "cairo1.languageServerPath": "/home/mugiwara/.cargo/bin/cairo-language-server",
+   "cairo1.languageServerExtraEnv": null
+}
