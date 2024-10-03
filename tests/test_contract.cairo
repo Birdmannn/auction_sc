@@ -1,7 +1,5 @@
 use snforge_std::{declare, ContractClassTrait, DeclareResultTrait};
-use auction_sc::{
-    IAuctionDispatcher, IAuctionDispatcherTrait
-};
+use auction_sc::{IAuctionDispatcher, IAuctionDispatcherTrait};
 use starknet::ContractAddress;
 
 
@@ -44,7 +42,7 @@ fn bid_on_items() {
     dispatcher.bid("dogs", 300_u32);
     // dispatcher.bid("dogs", 50_u32);
     dispatcher.bid("hamster", 60_u32);
-// assert(, '');
+    // assert(, '');
 }
 
 #[test]
@@ -54,7 +52,9 @@ fn further_test() {
     dispatcher.register_item("dogs");
     assert(dispatcher.is_registered("dogs") == true, 'not registered');
     dispatcher.register_item("cats that seem longer than a regular felt");
-    assert(dispatcher.is_registered("cats that seem longer than a regular felt") == true, 'cats failed');
+    assert(
+        dispatcher.is_registered("cats that seem longer than a regular felt") == true, 'cats failed'
+    );
 }
 
 #[test]
