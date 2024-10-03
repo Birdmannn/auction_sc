@@ -1,6 +1,6 @@
 use snforge_std::{declare, ContractClassTrait, DeclareResultTrait};
 use auction_sc::{
-    IAuctionDispatcher, IAuctionDispatcherTrait, IAuctionSafeDispatcher, IAuctionSafeDispatcherTrait
+    IAuctionDispatcher, IAuctionDispatcherTrait
 };
 use starknet::ContractAddress;
 
