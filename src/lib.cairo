@@ -88,6 +88,8 @@ mod Auction {
 
         fn bid(ref self: ContractState, mut item_name: ByteArray, amount: u32) {
             let item_id: felt252 = InternalFunctions::resolve_name(ref item_name);
+            let(_, is_registered) = self.register.entry(item_id).read();
+            assert!(is_registered == true, "The item you want to bid on is not registered");
             let item_id_ref = @item_id;
             let bid = @amount;
             let bid_to_match: u32 = self.bid.entry(*item_id_ref).read();

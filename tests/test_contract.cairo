@@ -42,6 +42,15 @@ fn bid_on_items() {
     let dispatcher = IAuctionDispatcher { contract_address };
     dispatcher.register_item("dogs");
     dispatcher.bid("dogs", 300_u32);
-    dispatcher.bid("dogs", 50_u32);
-    // assert(, '');
+    // dispatcher.bid("dogs", 50_u32);
+    dispatcher.bid("hamster", 60_u32);
+// assert(, '');
+}
+
+#[test]
+fn further_test() {
+    let contract_address = deploy_contract("Auction");
+    let dispatcher = IAuctionDispatcher { contract_address };
+    dispatcher.register_item("dogs");
+    assert(dispatcher.is_registered("dogs") == true, 'not registered');
 }
