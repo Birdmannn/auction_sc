@@ -53,4 +53,22 @@ fn further_test() {
     let dispatcher = IAuctionDispatcher { contract_address };
     dispatcher.register_item("dogs");
     assert(dispatcher.is_registered("dogs") == true, 'not registered');
+    dispatcher.register_item("cats that seem longer than a regular felt");
+    assert(dispatcher.is_registered("cats that seem longer than a regular felt") == true, 'cats failed');
+}
+
+#[test]
+fn check_returned_items_from_array() {
+    let contract_address = deploy_contract("Auction");
+    let dispatcher = IAuctionDispatcher { contract_address };
+    dispatcher.register_item("dogs");
+    dispatcher.register_item("cats");
+    dispatcher.bid("dogs", 60_u32);
+
+    let mut items: Array<(ByteArray, u32)> = array![];
+    items.append(("dogs", 60_u32));
+    items.append(("cats", 0_u32));
+
+    let returned_items: Array<(ByteArray, u32)> = dispatcher.get_registered_items();
+    assert(items == returned_items, 'array test failed');
 }

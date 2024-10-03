@@ -63,7 +63,6 @@ mod Auction {
             self.items_in_store.write(items_in_store + 1);
             self.item_list.append().write(self.get_item_name(item_id_ref));
             
-            // let (item_name, _) = self.register.read(*item_id_ref);
             let item_name: ByteArray = self.get_item_name(item_id_ref);
             self.emit(RegisteredItem { item_name, status: "registered" });
         }
