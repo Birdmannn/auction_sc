@@ -16,7 +16,7 @@ Interact with the Smart Contract on [Starkscan!](https://sepolia.starkscan.co/co
 ```
 
 ## Contract Interface
-There are the list of functions to interact with
+These are the list of functions to interact with
 ```cairo
     fn register_item(ref self: TContractState, item_name: ByteArray);
     fn unregister_item(ref self: TContractState, item_name: ByteArray);
