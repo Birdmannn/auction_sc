@@ -15,4 +15,17 @@ Interact with the Smart Contract on [Starkscan!](https://sepolia.starkscan.co/co
 0x0034d2b3bd8ff85077c14883b1322e5b6706f7ee8aa92e8cf9b2fa06554fa102
 ```
 
+## Contract Interface
+There are the list of functions to interact with
+```
+    fn register_item(ref self: TContractState, item_name: ByteArray);
+    fn unregister_item(ref self: TContractState, item_name: ByteArray);
+    fn bid(ref self: TContractState, item_name: ByteArray, amount: u32);
+    fn get_highest_bidder(self: @TContractState, item_name: ByteArray) -> u32;
+    fn is_registered(self: @TContractState, item_name: ByteArray) -> bool;
+    fn get_registered_items(self: @TContractState) -> Array<(ByteArray, u32)>;
+    fn get_registered_item(self: @TContractState, item_name: ByteArray) -> (ByteArray, u32);
+    fn get_item_count(self: @TContractState) -> u64;
+```
+
 
